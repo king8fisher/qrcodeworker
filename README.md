@@ -23,4 +23,12 @@ Bits being layed out this way:
  +------------+
 ```
 
-* `npm run deploy`
+### Deployment
+
+* `npm i` to install dependencies.
+* rename `wrangler.example.toml` to `wrangler.toml`, supply worker name.
+* `npx wrangler login`
+  * `npx` uses an installed locally package from `node_modules` if it finds one (and `wrangler` is among `devDependencies`), this way we are ensuring the right version. If it cannot find dependency, `npx` falls back to global or download.
+* `npx wrangler whoami` to confirm who is authenticated.
+* `npm run deploy` 
+  * will execute `wrangler` from `node_modules`. This is because `npm` automatically adds `node_modules/.bin` to the `PATH` when running scripts, making the local binaries directly executable.
